@@ -1,0 +1,55 @@
+---
+title: "Languages Spoken in the US"
+output: html_notebook
+---
+
+This project seeks to make data about languages spoken in the US accessible to decision-makers in social sector enterprises.
+
+```{r env setup}
+library(tidyverse)
+library(tidycensus)
+library(kableExtra)
+#set your census api key using instructions at https://walker-data.com/tidycensus/reference/census_api_key.html
+
+```
+
+```{r get data}
+lang_pums <- get_pums(
+  variables = c("LANP", "AGEP", "ENG"),
+  state = "all",
+  survey = "acs5",
+  year = 2021,
+  recode = TRUE
+)
+```
+
+
+```{r subset data}
+lang_nonEng <- lang_pums %>%
+  filter(LANP != "000N")
+
+
+```
+
+
+
+
+
+```{r}
+lang_totals <- lang_nonEng %>%
+  count(LANP_label, ENG_label, ST_label, wt = PWGTP)%>%
+  arrange(desc(n))
+
+lang_totals%>%
+  kbl()%>%
+  kable_paper("striped", "hover", "responsive", fixed_thead = T)
+```
+
+
+
+```{r}
+plot <- ggplot(lang_nonEng)+
+  geom_col(aes(x=PWGTP, y=LANP_label))
+plot
+```
+
