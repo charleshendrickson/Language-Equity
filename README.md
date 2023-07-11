@@ -1,5 +1,5 @@
 # Language-Equity
-Using data to advance language equity
+Using data to advance language equity. A project by the United Nations CIFAL Honolulu.
 
 Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
