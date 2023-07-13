@@ -11,6 +11,9 @@ library(tidycensus)
 library(kableExtra)
 #set your census api key using instructions at https://walker-data.com/tidycensus/reference/census_api_key.html
 
+#census_api_key("7b6e5d5be965352fbf9cbedda0c5eac7180508b2", overwrite = FALSE, install = TRUE)
+
+readRenviron("~/.Renviron")
 ```
 
 ```{r get data}
